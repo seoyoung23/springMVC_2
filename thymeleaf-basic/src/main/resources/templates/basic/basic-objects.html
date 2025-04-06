@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <h1>식 기본 객체 (Expression Basic Objects)</h1>
+        <ul>
+            <!-- springBoot 3.0 이상인 경우
+                #request, #response, #session은 보안상의 이유로 객체에 직접 접근하는 것을 막음. -->
+        <!--    <li>request = <span th:text="${#request}"></span></li>-->
+        <!--    <li>response = <span th:text="${#response}"></span></li>-->
+        <!--    <li>session = <span th:text="${#session}"></span></li>-->
+
+            <!-- HttpServletRequest는 인터페이스이고, Tomcat에서는 RequestFacade라는 클래스로 구현됨.
+                RequestFacade는 보안 및 안정성 강화를 위해 Tomcat의 원래 Request 객체를 감싸는 역할을 함. -->
+            <li>request = <span th:text="${request}"></span></li>
+            <li>response = <span th:text="${response}"></span></li>
+            <li>session = <span th:text="${session}"></span></li>
+            <li>servletContext = <span th:text="${servletContext}"></span></li>
+            <li>locale = <span th:text="${#locale}"></span></li>
+        </ul>
+        <h1>편의 객체</h1>
+        <ul>
+            <li>Request Parameter = <span th:text="${param.paramData}"></span></li>
+            <li>session = <span th:text="${session.sessionData}"></span></li>
+            <li>spring bean = <span th:text="${@helloBean.hello('Spring!')}"></span></li>
+        </ul>
+    </body>
+</html>
